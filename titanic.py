@@ -16,14 +16,14 @@ import pandas as pd
 
 titanic = pd.read_csv("train.csv")
 #print titanic.describe()
- # fill NAN ages with median - we should bootstrap this later
+ # fill NAN ages with median - should probably make this better later
  titanic["Age"] = titanic["Age"].fillna(titanic["Age"].median())
 # Replace all the occurences of male with the number 0.
  titanic.loc[titanic["Sex"] == "male", "Sex"] = 0 
  titanic.loc[titanic["Sex"] == "female", "Sex"] = 1
 
 # tidy embarked bit
-titanic["Embarked"] = titanic["Embarked"].fillna("S") # bootstrap later
+titanic["Embarked"] = titanic["Embarked"].fillna("S") # improve later
 titanic.loc[titanic["Embarked"] == "S", "Embarked"] = 0
 titanic.loc[titanic["Embarked"] == "C", "Embarked"] = 1
 titanic.loc[titanic["Embarked"] == "Q", "Embarked"] = 2
