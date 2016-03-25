@@ -15,6 +15,7 @@ from sklearn.svm import SVC
 import numpy as np
 import pandas as pd
 
+<<<<<<< HEAD
 
 def create_submission(clf, train, test, predictors, f="kaggle.csv"):
     """
@@ -27,6 +28,21 @@ def create_submission(clf, train, test, predictors, f="kaggle.csv"):
                     "Survived": predictions    })
     
     submission.to_csv(f, index=False)
+=======
+titanic = pd.read_csv("train.csv")
+#print titanic.describe()
+ # fill NAN ages with median - should probably make this better later
+ titanic["Age"] = titanic["Age"].fillna(titanic["Age"].median())
+# Replace all the occurences of male with the number 0.
+ titanic.loc[titanic["Sex"] == "male", "Sex"] = 0 
+ titanic.loc[titanic["Sex"] == "female", "Sex"] = 1
+
+# tidy embarked bit
+titanic["Embarked"] = titanic["Embarked"].fillna("S") # improve later
+titanic.loc[titanic["Embarked"] == "S", "Embarked"] = 0
+titanic.loc[titanic["Embarked"] == "C", "Embarked"] = 1
+titanic.loc[titanic["Embarked"] == "Q", "Embarked"] = 2
+>>>>>>> 2ec09ffd60d21e40acbf4b7f2e80302824b59e3f
 
     return
 
